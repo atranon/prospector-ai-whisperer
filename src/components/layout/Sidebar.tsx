@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
-import { FolderIcon, MessagesSquare, Settings, Users, Search } from "lucide-react";
+import { FolderIcon, MessagesSquare, Settings, Users, Search, Bot } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 interface NavItem {
@@ -32,6 +32,11 @@ const navItems: NavItem[] = [
     title: "Messaging",
     href: "/messaging",
     icon: MessagesSquare,
+  },
+  {
+    title: "Agent",
+    href: "/agent",
+    icon: Bot,
   },
   {
     title: "Settings",
