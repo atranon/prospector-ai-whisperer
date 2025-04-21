@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,11 +8,16 @@ import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
+const TEMPLATE_4T = `Hi {{first_name}},\n\nI see you're with {{company}}. Many {{industry}} leaders like you are tackling {{trigger}}. We built {{tool}} to help teams {{target}}. Can I share a quick tip on how you could {{teaser}}?\n\nBest,\n{{user_name}}`;
+
+const TEMPLATE_AIDA = `Hi {{first_name}},\n\nAre you looking to take {{company}}’s {{focus_area}} to the next level? [Attention]\n\nMany in {{industry}} achieve outstanding results by {{interest}}. [Interest]\n\nImagine increasing {{benefit}} with a simple change. [Desire]\n\nWould you be open to connecting for 10 minutes to explore? [Action]\n\nBest regards,\n{{user_name}}`;
+
 export function ICPBuilder() {
   const [icpName, setIcpName] = useState("My ICP");
   const [companySize, setCompanySize] = useState([50, 1000]);
   const [includeDecisionMakers, setIncludeDecisionMakers] = useState(true);
-  
+  const [messagingFramework, setMessagingFramework] = useState<"aida" | "4t">("aida");
+
   return (
     <Tabs defaultValue="company" className="w-full">
       <TabsList className="grid w-full grid-cols-3">
@@ -21,7 +25,7 @@ export function ICPBuilder() {
         <TabsTrigger value="contact">Contact Criteria</TabsTrigger>
         <TabsTrigger value="engagement">Engagement Rules</TabsTrigger>
       </TabsList>
-      
+
       <TabsContent value="company">
         <Card>
           <CardHeader>
@@ -174,7 +178,36 @@ export function ICPBuilder() {
                 </Button>
               </div>
             </div>
-            
+
+            <div className="space-y-1">
+              <Label htmlFor="framework">Messaging Framework</Label>
+              <Select
+                value={messagingFramework}
+                onValueChange={v => setMessagingFramework(v as "aida" | "4t")}
+              >
+                <SelectTrigger id="framework">
+                  <SelectValue placeholder="Select messaging framework" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="aida">AIDA (Attention-Interest-Desire-Action)</SelectItem>
+                  <SelectItem value="4t">4T (Trigger, Target, Tool, Teaser)</SelectItem>
+                </SelectContent>
+              </Select>
+              <p className="text-xs text-muted-foreground mt-1">
+                Pick a framework to optimize message hooks and response rates.
+              </p>
+            </div>
+
+            <div className="space-y-1">
+              <Label>Sample Initial Message</Label>
+              <div className="bg-muted p-3 rounded text-sm whitespace-pre-line font-mono">
+                {messagingFramework === "aida" ? TEMPLATE_AIDA : TEMPLATE_4T}
+              </div>
+              <p className="text-xs text-muted-foreground mt-1">
+                Customize and use variables to tailor your outreach.
+              </p>
+            </div>
+
             <div className="space-y-1">
               <Label htmlFor="frequency">Contact Frequency</Label>
               <Select defaultValue="weekly">
@@ -190,7 +223,7 @@ export function ICPBuilder() {
                 </SelectContent>
               </Select>
             </div>
-            
+
             <div className="space-y-1">
               <Label htmlFor="follow-up">Follow-up Strategy</Label>
               <Select defaultValue="3-touches">
@@ -205,7 +238,7 @@ export function ICPBuilder() {
                 </SelectContent>
               </Select>
             </div>
-            
+
             <div className="flex items-center space-x-2">
               <Switch id="personalize" defaultChecked />
               <Label htmlFor="personalize">Auto-personalize messages with AI</Label>
