@@ -1,4 +1,3 @@
-
 import { Sidebar } from "@/components/layout/Sidebar";
 import Header from "@/components/layout/Header";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -38,66 +37,191 @@ const SettingsPage = () => {
                     Connect to the platforms you use for prospecting and outreach
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="rounded-md border p-4">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
-                        <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                            <rect x="2" y="9" width="4" height="12"></rect>
-                            <circle cx="4" cy="4" r="2"></circle>
-                          </svg>
+                <CardContent className="space-y-8">
+                  {/* Social & Outreach Networks */}
+                  <div>
+                    <h4 className="font-semibold text-base mb-3">Social & Outreach Networks</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {/* LinkedIn */}
+                      <div className="rounded-md border p-4 flex items-center justify-between">
+                        <div className="flex items-center space-x-3">
+                          <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                            {/* LinkedIn Icon */}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" stroke="currentColor" fill="none" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" /><path d="M8 11v5" /><circle cx="8" cy="8" r="1" /><path d="M12 16v-3a2 2 0 1 1 4 0v3" /></svg>
+                          </div>
+                          <div>
+                            <h3 className="font-medium">LinkedIn</h3>
+                            <p className="text-xs text-muted-foreground">Find and message prospects</p>
+                          </div>
                         </div>
-                        <div>
-                          <h3 className="font-medium">LinkedIn</h3>
-                          <p className="text-sm text-muted-foreground">Connect to find and message prospects</p>
-                        </div>
+                        <Button>Connect</Button>
                       </div>
-                      <Button>Connect</Button>
+                      {/* X (Twitter) */}
+                      <div className="rounded-md border p-4 flex items-center justify-between">
+                        <div className="flex items-center space-x-3">
+                          <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                            {/* X Icon */}
+                            <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M3 3 21 21"/><path d="M21 3 3 21"/></svg>
+                          </div>
+                          <div>
+                            <h3 className="font-medium">X (Twitter)</h3>
+                            <p className="text-xs text-muted-foreground">Outreach on X/Twitter</p>
+                          </div>
+                        </div>
+                        <Button>Connect</Button>
+                      </div>
+                      {/* LinkedIn Sales Navigator */}
+                      <div className="rounded-md border p-4 flex items-center justify-between">
+                        <div className="flex items-center space-x-3">
+                          <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" stroke="currentColor" fill="none" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" /><path d="M10 7h4v10h-4z" /><path d="M7 10h10v4H7z" /></svg>
+                          </div>
+                          <div>
+                            <h3 className="font-medium">Sales Navigator</h3>
+                            <p className="text-xs text-muted-foreground">Advanced LinkedIn outreach</p>
+                          </div>
+                        </div>
+                        <Button>Connect</Button>
+                      </div>
                     </div>
                   </div>
-                  
-                  <div className="rounded-md border p-4">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
-                        <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                          </svg>
+
+                  {/* Job Networks */}
+                  <div>
+                    <h4 className="font-semibold text-base mb-3">Job Platforms</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {/* Upwork */}
+                      <div className="rounded-md border p-4 flex items-center justify-between">
+                        <div className="flex items-center space-x-3">
+                          <div className="h-10 w-10 rounded-full bg-green-50 flex items-center justify-center">
+                            {/* Upwork Icon */}
+                            <span className="font-bold text-green-600 text-lg">Up</span>
+                          </div>
+                          <div>
+                            <h3 className="font-medium">Upwork</h3>
+                            <p className="text-xs text-muted-foreground">Find freelancers & prospects</p>
+                          </div>
                         </div>
-                        <div>
-                          <h3 className="font-medium">Email Providers</h3>
-                          <p className="text-sm text-muted-foreground">Connect to your email for outreach</p>
-                        </div>
+                        <Button>Connect</Button>
                       </div>
-                      <div className="flex space-x-2">
-                        <Button variant="outline">Gmail</Button>
-                        <Button variant="outline">Outlook</Button>
-                        <Button variant="outline">SMTP</Button>
+                      {/* Indeed */}
+                      <div className="rounded-md border p-4 flex items-center justify-between">
+                        <div className="flex items-center space-x-3">
+                          <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center">
+                            {/* Indeed Icon */}
+                            <span className="font-bold text-blue-600 text-lg">in</span>
+                          </div>
+                          <div>
+                            <h3 className="font-medium">Indeed</h3>
+                            <p className="text-xs text-muted-foreground">Access top job seekers</p>
+                          </div>
+                        </div>
+                        <Button>Connect</Button>
                       </div>
                     </div>
                   </div>
-                  
-                  <div className="rounded-md border p-4">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
-                        <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
-                            <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
-                          </svg>
+
+                  {/* CRMs & Data Providers */}
+                  <div>
+                    <h4 className="font-semibold text-base mb-3">CRM & Data Providers</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {/* ZoomInfo */}
+                      <div className="rounded-md border p-4 flex items-center justify-between">
+                        <div className="flex items-center space-x-3">
+                          <div className="h-10 w-10 rounded-full bg-yellow-50 flex items-center justify-center">
+                            {/* ZoomInfo Icon */}
+                            <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 16h8M8 12h8M8 8h8"/></svg>
+                          </div>
+                          <div>
+                            <h3 className="font-medium">ZoomInfo</h3>
+                            <p className="text-xs text-muted-foreground">B2B contact data</p>
+                          </div>
                         </div>
-                        <div>
-                          <h3 className="font-medium">CRM Integration</h3>
-                          <p className="text-sm text-muted-foreground">Sync prospects with your CRM</p>
-                        </div>
+                        <Button>Connect</Button>
                       </div>
-                      <div className="flex space-x-2">
-                        <Button variant="outline">Salesforce</Button>
-                        <Button variant="outline">HubSpot</Button>
-                        <Button variant="outline">Other</Button>
+                      {/* Salesforce */}
+                      <div className="rounded-md border p-4 flex items-center justify-between">
+                        <div className="flex items-center space-x-3">
+                          <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center">
+                            {/* Salesforce Icon */}
+                            <span className="font-bold text-blue-600 text-base">SF</span>
+                          </div>
+                          <div>
+                            <h3 className="font-medium">Salesforce</h3>
+                            <p className="text-xs text-muted-foreground">CRM integration</p>
+                          </div>
+                        </div>
+                        <Button>Connect</Button>
+                      </div>
+                      {/* HubSpot */}
+                      <div className="rounded-md border p-4 flex items-center justify-between">
+                        <div className="flex items-center space-x-3">
+                          <div className="h-10 w-10 rounded-full bg-orange-50 flex items-center justify-center">
+                            {/* HubSpot Icon */}
+                            <span className="font-bold text-orange-600 text-base">HS</span>
+                          </div>
+                          <div>
+                            <h3 className="font-medium">HubSpot</h3>
+                            <p className="text-xs text-muted-foreground">CRM integration</p>
+                          </div>
+                        </div>
+                        <Button>Connect</Button>
+                      </div>
+                      {/* Pipedrive */}
+                      <div className="rounded-md border p-4 flex items-center justify-between">
+                        <div className="flex items-center space-x-3">
+                          <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center">
+                            {/* Pipedrive Icon */}
+                            <span className="font-bold text-gray-700 text-base">PD</span>
+                          </div>
+                          <div>
+                            <h3 className="font-medium">Pipedrive</h3>
+                            <p className="text-xs text-muted-foreground">CRM integration</p>
+                          </div>
+                        </div>
+                        <Button>Connect</Button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Scheduling & Meetings */}
+                  <div>
+                    <h4 className="font-semibold text-base mb-3">Scheduling & Meetings</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {/* Calendly */}
+                      <div className="rounded-md border p-4 flex items-center justify-between">
+                        <div className="flex items-center space-x-3">
+                          <div className="h-10 w-10 rounded-full bg-purple-50 flex items-center justify-center">
+                            {/* Calendly Icon */}
+                            <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 8h8v8H8z"/></svg>
+                          </div>
+                          <div>
+                            <h3 className="font-medium">Calendly</h3>
+                            <p className="text-xs text-muted-foreground">Schedule meetings</p>
+                          </div>
+                        </div>
+                        <Button>Connect</Button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Communication */}
+                  <div>
+                    <h4 className="font-semibold text-base mb-3">Communication</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {/* Slack */}
+                      <div className="rounded-md border p-4 flex items-center justify-between">
+                        <div className="flex items-center space-x-3">
+                          <div className="h-10 w-10 rounded-full bg-pink-50 flex items-center justify-center">
+                            {/* Slack Icon */}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 20 20"><rect width="2.5" height="7.5" rx="1" x="8.75" y="1"/><rect width="2.5" height="7.5" rx="1" x="8.75" y="11.5"/><rect width="7.5" height="2.5" rx="1" x="1" y="8.75"/><rect width="7.5" height="2.5" rx="1" x="11.5" y="8.75"/></svg>
+                          </div>
+                          <div>
+                            <h3 className="font-medium">Slack</h3>
+                            <p className="text-xs text-muted-foreground">Team communication</p>
+                          </div>
+                        </div>
+                        <Button>Connect</Button>
                       </div>
                     </div>
                   </div>
