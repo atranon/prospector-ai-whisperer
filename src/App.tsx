@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -11,12 +10,37 @@ import ProspectingPage from "./pages/ProspectingPage";
 import SettingsPage from "./pages/SettingsPage";
 import AgentPage from "./pages/AgentPage";
 import NotFound from "./pages/NotFound";
+import { AuthProvider } from "@/components/auth/AuthProvider";
+import AuthForm from "@/components/auth/AuthForm";
+import { useSupabaseAuth } from "@/hooks/useSupabaseAuth";
+import React from "react";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
+const ProtectedApp = () => {
+  const { user, loading, signOut } = useSupabaseAuth();
+
+  if (loading) {
+    return (
+      <div className="h-screen flex items-center justify-center">
+        <div className="text-xl animate-pulse">Loading...</div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return <AuthForm />;
+  }
+
+  return (
+    <>
+      <div className="fixed top-0 right-0 p-2 z-50">
+        <button
+          onClick={signOut}
+          className="rounded px-3 py-1 text-sm bg-muted text-muted-foreground border hover:bg-destructive hover:text-destructive-foreground">
+          Logout
+        </button>
+      </div>
       <Toaster />
       <Sonner />
       <BrowserRouter>
@@ -27,12 +51,21 @@ const App = () => (
           <Route path="/prospecting" element={<ProspectingPage />} />
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/agent" element={<AgentPage />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+    </>
+  );
+};
+
+const App = () => (
+  <AuthProvider>
+    <TooltipProvider>
+      <QueryClientProvider client={queryClient}>
+        <ProtectedApp />
+      </QueryClientProvider>
     </TooltipProvider>
-  </QueryClientProvider>
+  </AuthProvider>
 );
 
 export default App;
