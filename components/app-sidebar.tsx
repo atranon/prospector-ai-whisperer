@@ -1,6 +1,7 @@
 "use client"
 
 import { Users, MessageSquare, Settings, BarChart3, Zap, Database, Home } from "lucide-react"
+import { UserProfile } from "@/components/user-profile"
 
 import {
   Sidebar,
@@ -19,7 +20,7 @@ import {
 export function AppSidebar() {
   return (
     <Sidebar>
-      <SidebarHeader className="flex items-center px-4 py-2">
+      <SidebarHeader className="flex items-center justify-between px-4 py-2">
         <div className="flex items-center gap-2">
           <Zap className="h-6 w-6 text-primary" />
           <span className="text-xl font-bold">AI Prospector</span>
@@ -89,8 +90,9 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter className="p-4">
+      <SidebarFooter className="p-4 flex items-center justify-between">
         <div className="text-xs text-muted-foreground">AI Prospector v1.0.0</div>
+        <UserProfile />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

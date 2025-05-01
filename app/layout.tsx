@@ -1,12 +1,16 @@
 import type React from "react"
-import { ThemeProvider } from "@/components/theme-provider"
-import { Toaster } from "@/components/ui/toaster"
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
 import { SidebarProvider } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
-import { AppProvider } from "@/contexts/app-context"
+import { AuthProvider } from "@/contexts/auth-context"
+import { Toaster } from "@/components/ui/toaster"
+import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
 
-export const metadata = {
+const inter = Inter({ subsets: ["latin"] })
+
+export const metadata: Metadata = {
   title: "AI Prospector",
   description: "AI-powered sales prospecting assistant",
     generator: 'v0.dev'
@@ -18,16 +22,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen bg-background font-sans antialiased">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <AppProvider>
+    <html lang="en">
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <AuthProvider>
             <SidebarProvider>
               <AppSidebar />
-              <div className="flex min-h-screen flex-col">{children}</div>
+              <main className="flex min-h-screen flex-col md:pl-64">{children}</main>
               <Toaster />
             </SidebarProvider>
-          </AppProvider>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

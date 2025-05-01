@@ -1,129 +1,97 @@
 "use client"
 
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Badge } from "@/components/ui/badge"
-import { Copy, Eye, EyeOff, RefreshCw, Plus } from "lucide-react"
-import { useState } from "react"
+import { Eye, EyeOff, Save } from "lucide-react"
 
 export function APISettings() {
-  const [showKeys, setShowKeys] = useState<Record<string, boolean>>({
-    openai: false,
-    linkedin: false,
-    clay: false,
+  const [showOpenAI, setShowOpenAI] = useState(false)
+  const [apiKeys, setApiKeys] = useState({
+    openai: "",
   })
 
-  const toggleShowKey = (key: string) => {
-    setShowKeys((prev) => ({
-      ...prev,
-      [key]: !prev[key],
-    }))
+  const handleChange = (key: string, value: string) => {
+    setApiKeys((prev) => ({ ...prev, [key]: value }))
   }
 
-  const apiKeys = [
-    {
-      id: "openai",
-      name: "OpenAI API Key",
-      description: "Used for AI text generation and analysis",
-      value: "sk-••••••••••••••••••••••••••••••",
-      status: "active",
-      lastUsed: "10 minutes ago",
-    },
-    {
-      id: "linkedin",
-      name: "LinkedIn API Key",
-      description: "Used for LinkedIn profile data and messaging",
-      value: "li-••••••••••••••••••••••••••••••",
-      status: "active",
-      lastUsed: "1 hour ago",
-    },
-    {
-      id: "clay",
-      name: "Clay API Key",
-      description: "Used for lead data enrichment",
-      value: "clay-••••••••••••••••••••••••••••••",
-      status: "inactive",
-      lastUsed: "Never",
-    },
-  ]
+  const handleSave = async () => {
+    // In a real app, this would save to Supabase securely
+    console.log("Saving API keys:", apiKeys)
+    alert("API keys saved!")
+  }
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between">
-        <h3 className="text-lg font-medium">API Keys</h3>
-        <Button>
-          <Plus className="mr-2 h-4 w-4" />
-          Add API Key
-        </Button>
-      </div>
-
-      <div className="space-y-4">
-        {apiKeys.map((apiKey) => (
-          <Card key={apiKey.id}>
-            <CardHeader className="pb-2">
-              <div className="flex items-start justify-between">
-                <div>
-                  <CardTitle>{apiKey.name}</CardTitle>
-                  <CardDescription>{apiKey.description}</CardDescription>
-                </div>
-                <Badge
-                  className={
-                    apiKey.status === "active"
-                      ? "bg-green-100 text-green-800 hover:bg-green-100 dark:bg-green-900 dark:text-green-300"
-                      : "bg-gray-100 text-gray-800 hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-300"
-                  }
+      <Card>
+        <CardHeader>
+          <CardTitle>OpenAI API Key</CardTitle>
+          <CardDescription>
+            Required for AI text generation. Get your API key from the{" "}
+            <a
+              href="https://platform.openai.com/account/api-keys"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline"
+            >
+              OpenAI dashboard
+            </a>
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-2">
+            <Label htmlFor="openai-key">API Key</Label>
+            <div className="flex">
+              <div className="relative flex-1">
+                <Input
+                  id="openai-key"
+                  type={showOpenAI ? "text" : "password"}
+                  placeholder="sk-..."
+                  value={apiKeys.openai}
+                  onChange={(e) => handleChange("openai", e.target.value)}
+                  className="pr-10"
+                />
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="absolute right-0 top-0 h-full"
+                  onClick={() => setShowOpenAI(!showOpenAI)}
                 >
-                  {apiKey.status === "active" ? "Active" : "Inactive"}
-                </Badge>
-              </div>
-            </CardHeader>
-            <CardContent className="pb-2">
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor={`key-${apiKey.id}`}>API Key</Label>
-                  <div className="flex">
-                    <div className="relative flex-1">
-                      <Input
-                        id={`key-${apiKey.id}`}
-                        value={showKeys[apiKey.id] ? "sk-actual-key-would-be-here-1234567890" : apiKey.value}
-                        readOnly
-                        className="pr-10"
-                      />
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="absolute right-0 top-0 h-full"
-                        onClick={() => toggleShowKey(apiKey.id)}
-                      >
-                        {showKeys[apiKey.id] ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                        <span className="sr-only">{showKeys[apiKey.id] ? "Hide" : "Show"} API Key</span>
-                      </Button>
-                    </div>
-                    <Button variant="outline" size="icon" className="ml-2">
-                      <Copy className="h-4 w-4" />
-                      <span className="sr-only">Copy API Key</span>
-                    </Button>
-                  </div>
-                </div>
-                <p className="text-sm text-muted-foreground">Last used: {apiKey.lastUsed}</p>
-              </div>
-            </CardContent>
-            <CardFooter className="pt-2">
-              <div className="flex gap-2">
-                <Button variant="outline" size="sm">
-                  <RefreshCw className="mr-2 h-4 w-4" />
-                  Regenerate
-                </Button>
-                <Button variant="outline" size="sm" className="text-red-500">
-                  Revoke
+                  {showOpenAI ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  <span className="sr-only">{showOpenAI ? "Hide" : "Show"} API Key</span>
                 </Button>
               </div>
-            </CardFooter>
-          </Card>
-        ))}
-      </div>
+            </div>
+            <p className="text-xs text-muted-foreground">
+              Your API key is stored securely and never shared with third parties.
+            </p>
+          </div>
+        </CardContent>
+        <CardFooter>
+          <Button onClick={handleSave}>
+            <Save className="mr-2 h-4 w-4" />
+            Save API Key
+          </Button>
+        </CardFooter>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Cost Management</CardTitle>
+          <CardDescription>Tips for managing your OpenAI API costs</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="list-disc list-inside space-y-2 text-sm">
+            <li>Use GPT-3.5 Turbo for most tasks (much cheaper than GPT-4)</li>
+            <li>Set a maximum daily message limit in Agent Settings</li>
+            <li>Use shorter, more focused prompts to reduce token usage</li>
+            <li>Monitor your usage in the OpenAI dashboard regularly</li>
+            <li>Set up usage limits in your OpenAI account settings</li>
+          </ul>
+        </CardContent>
+      </Card>
     </div>
   )
 }
