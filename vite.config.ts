@@ -10,6 +10,9 @@ export default defineConfig({
       '@': path.resolve(__dirname, './'),
     },
   },
+  server: {
+    port: 8080
+  },
   build: {
     outDir: 'dist',
   },
