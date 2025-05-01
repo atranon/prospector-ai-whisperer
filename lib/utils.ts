@@ -1,11 +1,12 @@
 
 import { Badge } from "@/components/ui/badge"
+import React from "react"
 
 export function cn(...classes: (string | undefined | boolean)[]) {
   return classes.filter(Boolean).join(" ")
 }
 
-export function getStatusBadge(status: string) {
+export function getStatusBadge(status: string): React.ReactNode {
   switch (status) {
     case "new":
       return <Badge variant="outline">New</Badge>
@@ -50,7 +51,7 @@ export function getStatusBadge(status: string) {
   }
 }
 
-export function getGradeBadge(grade: string) {
+export function getGradeBadge(grade: string): React.ReactNode {
   switch (grade) {
     case "A":
       return (
