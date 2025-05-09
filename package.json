@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "build:dev": "vite build --mode development",
     "lint": "next lint"
   },
   "dependencies": {
