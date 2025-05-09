@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import { ThemeProvider } from '@/components/theme-provider';
 import './globals.css';
 import RootLayout from './layout';
+import { Toaster } from '@/components/ui/toaster';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -13,6 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           {/* Your app content */}
         </div>
       </RootLayout>
+      <Toaster />
     </ThemeProvider>
   </React.StrictMode>
 );
