@@ -15,7 +15,7 @@ export const mockLeads: Lead[] = [
     lastActivity: "2 days ago",
     avatar: {
       name: "SJ",
-      image: undefined,
+      image: null,
     },
   },
   {
@@ -31,7 +31,7 @@ export const mockLeads: Lead[] = [
     lastActivity: "1 day ago",
     avatar: {
       name: "MC",
-      image: undefined,
+      image: null,
     },
   },
   {
@@ -47,7 +47,7 @@ export const mockLeads: Lead[] = [
     lastActivity: "5 hours ago",
     avatar: {
       name: "DW",
-      image: undefined,
+      image: null,
     },
   },
   {
@@ -63,7 +63,7 @@ export const mockLeads: Lead[] = [
     lastActivity: "3 hours ago",
     avatar: {
       name: "AR",
-      image: undefined,
+      image: null,
     },
   },
   {
@@ -79,7 +79,7 @@ export const mockLeads: Lead[] = [
     lastActivity: "1 week ago",
     avatar: {
       name: "JL",
-      image: undefined,
+      image: null,
     },
   },
   {
@@ -91,11 +91,11 @@ export const mockLeads: Lead[] = [
     status: "new",
     grade: "B",
     industry: "manufacturing",
-    lastContacted: null,
+    lastContacted: undefined,
     lastActivity: "3 days ago",
     avatar: {
       name: "RK",
-      image: undefined,
+      image: null,
     },
   },
 ]
