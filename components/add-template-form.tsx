@@ -135,7 +135,7 @@ export function AddTemplateForm({ onSuccess }: { onSuccess?: () => void }) {
               required
             />
             <p className="text-xs text-muted-foreground">
-              Use variables like {`{{first_name}}`}, {`{{company}}`}, etc. for personalization.
+              Use variables like {"{{"}<span>first_name</span>{"}}"}, {"{{"}<span>company</span>{"}}"}, etc. for personalization.
             </p>
           </div>
         </CardContent>
@@ -154,3 +154,4 @@ export function AddTemplateForm({ onSuccess }: { onSuccess?: () => void }) {
       </form>
     </Card>
   )
+}
