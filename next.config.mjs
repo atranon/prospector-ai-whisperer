@@ -12,6 +12,8 @@ const nextConfig = {
   },
   experimental: {
     serverActions: true,
+    // Disable generation of TypeScript types for routes
+    typedRoutes: false,
   },
   swcMinify: true,
   reactStrictMode: true,
