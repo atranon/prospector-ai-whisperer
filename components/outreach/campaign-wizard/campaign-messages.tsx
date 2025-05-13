@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Label } from "@/components/ui/label"
@@ -68,8 +69,8 @@ export function CampaignMessages({ data, updateData }: CampaignMessagesProps) {
           className="min-h-[150px]"
         />
         <p className="text-xs text-muted-foreground">
-          Available placeholders: {{ first_name }}, {{ last_name }}, {{ company }}, {{ title }}, {{ industry }},{" "}
-          {{ user_name }}
+          Available placeholders: {`{{first_name}}`}, {`{{last_name}}`}, {`{{company}}`}, {`{{title}}`}, {`{{industry}}`},{" "}
+          {`{{user_name}}`}
         </p>
       </div>
 

@@ -12,6 +12,8 @@ type User = {
 
 type AuthContextType = {
   user: User | null;
+  signIn: (email: string, password: string) => Promise<void>;
+  signUp: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
   isLoading: boolean;
 };
@@ -40,6 +42,47 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }, 500);
   }, []);
 
+  const signIn = async (email: string, password: string) => {
+    setIsLoading(true);
+    // Simulate sign in
+    return new Promise<void>((resolve, reject) => {
+      setTimeout(() => {
+        if (email && password) {
+          const mockUser = {
+            id: '123',
+            email,
+            user_metadata: {
+              name: 'Demo User',
+              avatar_url: '/public/placeholder-user.jpg',
+            },
+          };
+          setUser(mockUser);
+          setIsLoading(false);
+          resolve();
+        } else {
+          setIsLoading(false);
+          reject(new Error('Invalid credentials'));
+        }
+      }, 500);
+    });
+  };
+
+  const signUp = async (email: string, password: string) => {
+    setIsLoading(true);
+    // Simulate sign up
+    return new Promise<void>((resolve, reject) => {
+      setTimeout(() => {
+        if (email && password) {
+          setIsLoading(false);
+          resolve();
+        } else {
+          setIsLoading(false);
+          reject(new Error('Invalid credentials'));
+        }
+      }, 500);
+    });
+  };
+
   const signOut = async () => {
     // Simulate signout
     return new Promise<void>((resolve) => {
@@ -51,7 +94,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, signOut, isLoading }}>
+    <AuthContext.Provider value={{ user, signIn, signUp, signOut, isLoading }}>
       {children}
     </AuthContext.Provider>
   );

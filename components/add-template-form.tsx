@@ -1,3 +1,4 @@
+
 "use client"
 
 import type React from "react"
@@ -134,7 +135,7 @@ export function AddTemplateForm({ onSuccess }: { onSuccess?: () => void }) {
               required
             />
             <p className="text-xs text-muted-foreground">
-              Use variables like {{ first_name }}, {{ company }}, etc. for personalization.
+              Use variables like {`{{first_name}}`}, {`{{company}}`}, etc. for personalization.
             </p>
           </div>
         </CardContent>
@@ -153,4 +154,3 @@ export function AddTemplateForm({ onSuccess }: { onSuccess?: () => void }) {
       </form>
     </Card>
   )
-}

@@ -1,3 +1,4 @@
+
 import type { Lead } from "@/types/lead"
 
 export const mockLeads: Lead[] = [
@@ -14,7 +15,7 @@ export const mockLeads: Lead[] = [
     lastActivity: "2 days ago",
     avatar: {
       name: "SJ",
-      image: null,
+      image: undefined,
     },
   },
   {
@@ -30,7 +31,7 @@ export const mockLeads: Lead[] = [
     lastActivity: "1 day ago",
     avatar: {
       name: "MC",
-      image: null,
+      image: undefined,
     },
   },
   {
@@ -46,7 +47,7 @@ export const mockLeads: Lead[] = [
     lastActivity: "5 hours ago",
     avatar: {
       name: "DW",
-      image: null,
+      image: undefined,
     },
   },
   {
@@ -62,7 +63,7 @@ export const mockLeads: Lead[] = [
     lastActivity: "3 hours ago",
     avatar: {
       name: "AR",
-      image: null,
+      image: undefined,
     },
   },
   {
@@ -78,7 +79,7 @@ export const mockLeads: Lead[] = [
     lastActivity: "1 week ago",
     avatar: {
       name: "JL",
-      image: null,
+      image: undefined,
     },
   },
   {
@@ -94,7 +95,7 @@ export const mockLeads: Lead[] = [
     lastActivity: "3 days ago",
     avatar: {
       name: "RK",
-      image: null,
+      image: undefined,
     },
   },
 ]

@@ -1,3 +1,4 @@
+
 import { createClient } from "@supabase/supabase-js"
 import { createClientComponentClient, createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
@@ -12,12 +13,7 @@ export const getSupabaseClient = () => {
   }
 
   if (!clientInstance) {
-    clientInstance = createClientComponentClient<Database>({
-      options: {
-        autoRefreshToken: true,
-        persistSession: true,
-      },
-    })
+    clientInstance = createClientComponentClient<Database>()
   }
   return clientInstance
 }
