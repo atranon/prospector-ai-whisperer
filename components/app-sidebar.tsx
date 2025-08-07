@@ -1,6 +1,5 @@
-"use client"
-
 import { Users, MessageSquare, Settings, BarChart3, Zap, Database, Home } from "lucide-react"
+import { Link } from "react-router-dom"
 import { UserProfile } from "@/components/user-profile"
 
 import {
@@ -33,34 +32,34 @@ export function AppSidebar() {
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <a href="/">
+                  <Link to="/">
                     <Home />
                     <span>Dashboard</span>
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <a href="/leads">
+                  <Link to="/leads">
                     <Users />
                     <span>Leads</span>
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <a href="/outreach">
+                  <Link to="/outreach">
                     <MessageSquare />
                     <span>Outreach</span>
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <a href="/analytics">
+                  <Link to="/analytics">
                     <BarChart3 />
                     <span>Analytics</span>
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
@@ -72,18 +71,18 @@ export function AppSidebar() {
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <a href="/integrations">
+                  <Link to="/integrations">
                     <Database />
                     <span>Integrations</span>
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <a href="/settings">
+                  <Link to="/settings">
                     <Settings />
                     <span>Settings</span>
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
